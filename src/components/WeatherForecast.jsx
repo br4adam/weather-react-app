@@ -17,10 +17,10 @@ const WeatherForecast = ({ forecastData }) => {
         speed={100}
         className="swiper"
         breakpoints={{
-          320: {
+          375: {
             slidesPerView: 2,
           },
-          640: {
+          667: {
             slidesPerView: 4,
           }
         }}

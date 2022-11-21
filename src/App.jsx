@@ -39,7 +39,6 @@ const App = () => {
   const colorThemeSwitcher = (response) => {
     const daytime = response[0].weather[0].icon[2]
     daytime === "d" ? setTheme("light") : setTheme("dark")
-    console.log(daytime)
   }
 
   return (
