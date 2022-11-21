@@ -37,7 +37,7 @@ const App = () => {
   return (
     <div className="container">
       <Searchbar setCity={setCity}/>
-      <main>
+      <>
         { weatherData.main && forecastData
           ? (
             <>
@@ -47,7 +47,7 @@ const App = () => {
           )
           : <p>Not found...</p>
         }
-      </main>
+      </>
     </div>
   )
 }
