@@ -7,6 +7,7 @@ const App = () => {
   const [ weatherData, setWeatherData ] = useState({})
   const [ forecastData, setForecastData ] = useState([])
   const [ city, setCity ] = useState("Budapest")
+  const [ theme, setTheme ] = useState("light")
 
   const api = {
     url: "https://api.openweathermap.org/data/2.5",
@@ -27,27 +28,36 @@ const App = () => {
         console.log(response)
         setWeatherData(response[0])
         setForecastData(response[1].list)
+        colorThemeSwitcher(response)
       } catch (error) {
         console.log(error)
       }
     }
     fetchData()
-  }, [city])
+  },[city])
+
+  const colorThemeSwitcher = (response) => {
+    const daytime = response[0].weather[0].icon[2]
+    daytime === "d" ? setTheme("light") : setTheme("dark")
+    console.log(daytime)
+  }
 
   return (
-    <div className="container">
-      <Searchbar setCity={setCity}/>
-      <>
-        { weatherData.main && forecastData
-          ? (
-            <>
-              <WeatherNow weatherData={weatherData} />
-              <WeatherForecast forecastData={forecastData} />
-            </>
-          )
-          : <p>Not found...</p>
-        }
-      </>
+    <div className="container" data-theme={theme}>
+      <div className="wrapper">
+        <Searchbar setCity={setCity}/>
+        <>
+          { weatherData.main && forecastData
+            ? (
+              <>
+                <WeatherNow weatherData={weatherData} />
+                <WeatherForecast forecastData={forecastData} />
+              </>
+            )
+            : <p className="notification">Not found ...</p>
+          }
+        </>
+      </div>
     </div>
   )
 }

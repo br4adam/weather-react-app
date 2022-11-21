@@ -18,8 +18,8 @@ const WeatherNow = ({ weatherData }) => {
         </div>
       </div>
       <div className="weather-details">
-        {weatherDetails.map(detail => (
-          <div>
+        {weatherDetails.map((detail, index) => (
+          <div key={index}>
             <p>{detail.name}</p>
             <p>{detail.data}</p>
           </div>
