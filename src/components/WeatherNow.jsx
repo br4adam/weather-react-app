@@ -6,8 +6,10 @@ const WeatherNow = ({ weatherData }) => {
   return (
     <section className="weather-card">
       <div className="weather-now">
-        <img src={`/src/assets/icons/${weatherData.weather[0].icon}.png`} alt="weather icon" />     
-        <div>
+        <div className="image-wrapper">
+          <img src={`/src/assets/icons/${weatherData.weather[0].icon}.png`} alt="weather icon" />
+        </div>
+        <div className="data-wrapper">
           <p id="now-temp">{Math.round(weatherData.main.temp) + "\u02da"}</p>
           <p>{weatherData.weather[0].description}</p>
           <div className="location">

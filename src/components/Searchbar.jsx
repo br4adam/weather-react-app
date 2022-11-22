@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const Searchbar = ({ setCity }) => {
+const Searchbar = ({ setCity, isLoading }) => {
   const [ textFieldValue, setTextFieldValue ] = useState("")
 
   return (
@@ -10,7 +10,7 @@ const Searchbar = ({ setCity }) => {
       setTextFieldValue("")}}
     >
       <input 
-        placeholder="Search a city" 
+        placeholder={isLoading ? "Loading..." : "Search a city"} 
         value={textFieldValue}
         onChange={(e) => setTextFieldValue(e.target.value)}
       />

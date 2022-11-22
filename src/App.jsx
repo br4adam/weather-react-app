@@ -21,6 +21,7 @@ const App = () => {
   ]
 
   useEffect(() => {
+    setIsLoading(true)
     const fetchData = async () => {
       try {
         const response = await Promise.all(
@@ -33,6 +34,7 @@ const App = () => {
         setIsLoading(false)
       } catch (error) {
         console.log(error)
+        setIsLoading(false)
       }
     }
     fetchData()
@@ -46,8 +48,7 @@ const App = () => {
   return (
     <div className="container" data-theme={theme}>
       <div className="wrapper">
-        <Searchbar setCity={setCity}/>
-        <>
+        <Searchbar setCity={setCity} isLoading={isLoading}/>
           { weatherData.main && forecastData
             ? (
               <>
@@ -55,9 +56,8 @@ const App = () => {
                 <WeatherForecast forecastData={forecastData} theme={theme}/>
               </>
             )
-            : <p className="notification">{isLoading ? "Loading..." : "Not found..."}</p>
+            : <p className="notification">{isLoading ? "Loading..." : "No data found..."}</p>
           }
-        </>
       </div>
     </div>
   )
