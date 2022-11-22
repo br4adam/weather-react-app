@@ -50,7 +50,7 @@ const App = () => {
             ? (
               <>
                 <WeatherNow weatherData={weatherData} />
-                <WeatherForecast forecastData={forecastData} />
+                <WeatherForecast forecastData={forecastData} theme={theme}/>
               </>
             )
             : <p className="notification">Not found ...</p>

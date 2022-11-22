@@ -9,7 +9,7 @@ const Searchbar = ({ setCity }) => {
       setCity(textFieldValue)}
     }>
       <input 
-        placeholder="Search" 
+        placeholder="Search a city" 
         value={textFieldValue}
         onChange={(e) => setTextFieldValue(e.target.value)}
       />

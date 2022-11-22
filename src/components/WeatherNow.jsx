@@ -13,7 +13,7 @@ const WeatherNow = ({ weatherData }) => {
   return (
     <div className="weather-card">
       <div className="weather-now">
-        <img src={`./src/assets/icons/${weatherData.weather[0].icon}.png`} alt="weather icon" />     
+        <img src={`/src/assets/icons/${weatherData.weather[0].icon}.png`} alt="weather icon" />     
         <div>
           <p id="now-temp">{Math.round(weatherData.main.temp) + "\u02da"}</p>
           <p>{weatherData.weather[0].description}</p>

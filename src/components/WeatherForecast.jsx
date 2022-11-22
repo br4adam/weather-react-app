@@ -3,7 +3,9 @@ import { Pagination } from "swiper"
 import "swiper/css"
 import "swiper/css/pagination"
 
-const WeatherForecast = ({ forecastData }) => {
+const WeatherForecast = ({ forecastData, theme }) => {
+
+  const iconTheme = theme === "light" ? "d" : "n"
 
   return (
     <>
@@ -28,7 +30,7 @@ const WeatherForecast = ({ forecastData }) => {
         {forecastData && forecastData.map(item => 
           <SwiperSlide key={item.dt} className="forecast-card">
             <p>{Math.round(item.main.temp)} {'\u2103'}</p>
-            <img src={`./src/assets/icons/${item.weather[0].icon}.png`} alt="weather icon" />
+            <img src={`/src/assets/icons/${item.weather[0].icon.slice(0,2) + iconTheme}.png`} alt="weather icon" />
             <p>{item.dt_txt.slice(5,16)}</p>
           </SwiperSlide>
         )}
