@@ -6,8 +6,9 @@ const Searchbar = ({ setCity }) => {
   return (
     <form onSubmit={(e) => {
       e.preventDefault()
-      setCity(textFieldValue)}
-    }>
+      setCity(textFieldValue)
+      setTextFieldValue("")}}
+    >
       <input 
         placeholder="Search a city" 
         value={textFieldValue}

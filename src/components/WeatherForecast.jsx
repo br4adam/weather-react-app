@@ -1,7 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination } from "swiper"
+import { Pagination, Mousewheel } from "swiper"
 import "swiper/css"
 import "swiper/css/pagination"
+import "swiper/css/mousewheel"
 
 const WeatherForecast = ({ forecastData, theme }) => {
 
@@ -11,15 +12,17 @@ const WeatherForecast = ({ forecastData, theme }) => {
     <>
       <p className="title">5-day forecast</p>
       <Swiper
-        modules={[Pagination]}
+        modules={[Pagination, Mousewheel]}
         pagination={{
           type: "progressbar"
         }}
         spaceBetween={8}
-        speed={100}
+        speed={250}
+        mousewheel={true}
+        simulateTouch={true}
         className="swiper"
         breakpoints={{
-          375: {
+          0: {
             slidesPerView: 2,
           },
           667: {

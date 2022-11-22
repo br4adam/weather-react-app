@@ -6,6 +6,7 @@ import WeatherForecast from "./components/WeatherForecast"
 const App = () => {
   const [ weatherData, setWeatherData ] = useState({})
   const [ forecastData, setForecastData ] = useState([])
+  const [ isLoading, setIsLoading ] = useState(true)
   const [ city, setCity ] = useState("Budapest")
   const [ theme, setTheme ] = useState("light")
 
@@ -29,6 +30,7 @@ const App = () => {
         setWeatherData(response[0])
         setForecastData(response[1].list)
         colorThemeSwitcher(response)
+        setIsLoading(false)
       } catch (error) {
         console.log(error)
       }
@@ -53,7 +55,7 @@ const App = () => {
                 <WeatherForecast forecastData={forecastData} theme={theme}/>
               </>
             )
-            : <p className="notification">Not found ...</p>
+            : <p className="notification">{isLoading ? "Loading..." : "Not found..."}</p>
           }
         </>
       </div>
