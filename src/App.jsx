@@ -20,6 +20,11 @@ const App = () => {
     `${api.url}/forecast?q=${city}&units=metric&appid=${api.key}`
   ]
 
+  const colorThemeSwitcher = (response) => {
+    const daytime = response[0].weather[0].icon[2]
+    daytime === "d" ? setTheme("light") : setTheme("dark")
+  }
+
   useEffect(() => {
     setIsLoading(true)
     const fetchData = async () => {
@@ -39,11 +44,6 @@ const App = () => {
     }
     fetchData()
   },[city])
-
-  const colorThemeSwitcher = (response) => {
-    const daytime = response[0].weather[0].icon[2]
-    daytime === "d" ? setTheme("light") : setTheme("dark")
-  }
 
   return (
     <div className="container" data-theme={theme}>

@@ -129,8 +129,8 @@ input::placeholder {
 }
 
 .weather-card .weather-details svg {
-  width: 2rem;
   height: 2rem;
+  width: auto;
 }
 
 .title {
