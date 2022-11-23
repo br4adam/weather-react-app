@@ -4,8 +4,8 @@ import WeatherDetails from "./WeatherDetails"
 const WeatherNow = ({ weatherData }) => {
 
   return (
-    <section className="weather-card">
-      <div className="weather-now">
+    <main>
+      <section className="weather-now">
         <div className="image-wrapper">
           <img src={`/src/assets/icons/${weatherData.weather[0].icon}.png`} alt="weather icon" />
         </div>
@@ -17,9 +17,9 @@ const WeatherNow = ({ weatherData }) => {
             <p>{weatherData.name}, {weatherData.sys.country}</p>
           </div>
         </div>
-      </div>
+      </section>
       <WeatherDetails weatherData={weatherData}/>
-    </section>
+    </main>
   )
 }
 

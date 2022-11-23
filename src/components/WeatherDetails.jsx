@@ -9,15 +9,15 @@ const WeatherDetails = ({ weatherData }) => {
   ]
 
   return (
-    <div className="weather-details">
+    <section className="weather-details">
       {details.map((detail, index) => (
-        <div key={index}>
+        <div className="weather-card" key={index}>
           {detail.icon}
           <p>{detail.name}</p>
           <p>{detail.data}</p>
         </div>
       ))}
-    </div>
+    </section>
   )
 }
 

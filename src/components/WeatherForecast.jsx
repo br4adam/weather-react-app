@@ -9,7 +9,7 @@ const WeatherForecast = ({ forecastData, theme }) => {
 
   return (
     <>
-      <p className="title">5-day forecast</p>
+      <p className="mid-title">5-day forecast</p>
       <Swiper
         modules={[Pagination, Mousewheel]}
         pagination={{
