@@ -33,7 +33,6 @@
   color: var(--text-color);
   font-family: 'Poppins', Helvetica, sans-serif;
   height: 100vh;
-  transition: 0.25s ease-in-out;
 }
 
 .wrapper {
@@ -43,6 +42,8 @@
   align-items: center;
   padding: 1rem;
   max-width: 900px;
+  animation: fadein 0.5s forwards;
+
 }
 
 input {
@@ -166,6 +167,12 @@ main .weather-details svg {
 
 .notification {
   margin: 1rem 0;
+  animation: fadein 0.5s forwards;
+}
+
+@keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
 }
 
 .swiper {

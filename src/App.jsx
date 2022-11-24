@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import Searchbar from "./components/Searchbar"
 import WeatherNow from "./components/WeatherNow"
-import WeatherForecast from "./components/WeatherForecast"
+import Forecast from "./components/Forecast"
+import getColorScheme from "./utils/getColorScheme.js"
 
 const App = () => {
   const [ weatherData, setWeatherData ] = useState({})
@@ -20,11 +21,6 @@ const App = () => {
     `${api.url}/forecast?q=${city}&units=metric&appid=${api.key}`
   ]
 
-  const colorThemeSwitcher = (response) => {
-    const daytime = response[0].weather[0].icon[2]
-    daytime === "d" ? setTheme("light") : setTheme("dark")
-  }
-
   useEffect(() => {
     setIsLoading(true)
     const fetchData = async () => {
@@ -35,7 +31,7 @@ const App = () => {
         console.log(response)
         setWeatherData(response[0])
         setForecastData(response[1].list)
-        colorThemeSwitcher(response)
+        setTheme(getColorScheme(response))
         setIsLoading(false)
       } catch (error) {
         console.log(error)
@@ -53,7 +49,7 @@ const App = () => {
             ? (
               <>
                 <WeatherNow weatherData={weatherData} />
-                <WeatherForecast forecastData={forecastData} theme={theme}/>
+                <Forecast forecastData={forecastData} theme={theme}/>
               </>
             )
             : <p className="notification">{isLoading ? "Loading..." : "No data found..."}</p>

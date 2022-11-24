@@ -1,10 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Pagination, Mousewheel } from "swiper"
+import convertDate from "../utils/convertDate.js"
 import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/mousewheel"
 
-const WeatherForecast = ({ forecastData, theme }) => {
+const Forecast = ({ forecastData, theme }) => {
   const iconTheme = theme === "light" ? "d" : "n"
 
   return (
@@ -33,7 +34,7 @@ const WeatherForecast = ({ forecastData, theme }) => {
           <SwiperSlide key={item.dt} className="forecast-card">
             <p>{Math.round(item.main.temp)}{' \u2103'}</p>
             <img src={`/src/assets/icons/${item.weather[0].icon.slice(0,2) + iconTheme}.png`} alt="forecast icon" />
-            <p>{item.dt_txt.slice(5,16)}</p>
+            <p>{convertDate(item.dt_txt)}</p>
           </SwiperSlide>
         )}
       </Swiper>
@@ -41,4 +42,4 @@ const WeatherForecast = ({ forecastData, theme }) => {
   )
 }
 
-export default WeatherForecast
+export default Forecast
