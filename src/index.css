@@ -10,8 +10,8 @@
 }
 
 [data-theme="dark"] {
-  --background-color: #0e1014;
-  --card-background-color: #2d2d4f50;
+  --background-color: #0d0d18;
+  --card-background-color: #27274740;
   --text-color: #dbdbf1cd;
   --shadow-color: #11111490;
   --border-color: #48487eaa;
@@ -24,10 +24,14 @@
 }
 
 .container {
-  background: var(--background-color) url("./assets/backgrounds/background.png") no-repeat top center;
-  background-size: 100%;
-  font-family: 'Poppins', Helvetica, sans-serif;
+  background-color: var(--background-color);
+  background-image:
+    radial-gradient(at 0% 30%, #1671e150, transparent 60%),
+    radial-gradient(at 40% 20%, #b107c730, transparent 50%),
+    radial-gradient(at 100% 10%, #4c4cc820, transparent 40%),
+    radial-gradient(at 100% 70%, #0c1a8650, transparent 60%);
   color: var(--text-color);
+  font-family: 'Poppins', Helvetica, sans-serif;
   height: 100vh;
   transition: 0.25s ease-in-out;
 }
