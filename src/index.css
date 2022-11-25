@@ -40,7 +40,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   max-width: 900px;
   animation: fadein 0.5s forwards;
 
@@ -50,7 +50,7 @@ input {
   all: unset;
   background-color: var(--card-background-color);
   box-shadow: 0 0.25rem 0.5rem -0.25rem var(--shadow-color);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
   color: var(--text-color);
@@ -114,7 +114,7 @@ main .weather-now .image-wrapper img {
 main .weather-details {
   display: flex;
   gap: 0.5rem;
-  margin: 1rem 0;
+  margin: 1.5rem 0 1rem 0;
 }
 
 main .weather-details .weather-card {
@@ -130,7 +130,7 @@ main .weather-details .weather-card {
   border: 1px solid var(--border-color);
 }
 
-main .weather-details > .weather-card p:first-of-type {
+main .weather-details .weather-card p:first-of-type {
   font-size: 0.75rem;
 }
 
@@ -190,7 +190,7 @@ main .weather-details svg {
   height: 1px;
 }
 
-@media screen and (width <= 576px) {
+@media screen and (max-width: 576px) {
   html {
     font-size: 14px;
   }
@@ -199,7 +199,7 @@ main .weather-details svg {
     flex-wrap: wrap;
   }
   
-  main .weather-details > .weather-card {
+  main .weather-details .weather-card {
     width: calc(50% - 0.25rem)
   }
 }

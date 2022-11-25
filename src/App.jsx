@@ -3,6 +3,7 @@ import Searchbar from "./components/Searchbar"
 import WeatherNow from "./components/WeatherNow"
 import Forecast from "./components/Forecast"
 import getColorScheme from "./utils/getColorScheme.js"
+import createEndpoint from "./utils/createEndpoint"
 
 const App = () => {
   const [ weatherData, setWeatherData ] = useState({})
@@ -11,30 +12,20 @@ const App = () => {
   const [ city, setCity ] = useState("Budapest")
   const [ theme, setTheme ] = useState("light")
 
-  const api = {
-    url: "https://api.openweathermap.org/data/2.5",
-    key: import.meta.env.VITE_API_KEY
-  }
-
-  const urls = [
-    `${api.url}/weather?q=${city}&units=metric&appid=${api.key}`,
-    `${api.url}/forecast?q=${city}&units=metric&appid=${api.key}`
-  ]
-
   useEffect(() => {
     setIsLoading(true)
     const fetchData = async () => {
       try {
         const response = await Promise.all(
-          urls.map(url => fetch(url).then(res => res.json()))
+          createEndpoint(city, "metric").map(url => fetch(url).then(res => res.json()))
         )
         console.log(response)
         setWeatherData(response[0])
         setForecastData(response[1].list)
         setTheme(getColorScheme(response))
-        setIsLoading(false)
       } catch (error) {
         console.log(error)
+      } finally {
         setIsLoading(false)
       }
     }
@@ -46,12 +37,11 @@ const App = () => {
       <div className="wrapper">
         <Searchbar setCity={setCity} isLoading={isLoading}/>
           { weatherData.main && forecastData
-            ? (
+            ?
               <>
                 <WeatherNow weatherData={weatherData} />
                 <Forecast forecastData={forecastData} theme={theme}/>
               </>
-            )
             : <p className="notification">{isLoading ? "Loading..." : "No data found..."}</p>
           }
       </div>
