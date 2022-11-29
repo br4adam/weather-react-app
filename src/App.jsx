@@ -3,7 +3,7 @@ import Searchbar from "./components/Searchbar"
 import WeatherNow from "./components/WeatherNow"
 import Forecast from "./components/Forecast"
 import getColorScheme from "./utils/getColorScheme.js"
-import createEndpoint from "./utils/createEndpoint"
+import createEndpoint from "./utils/createEndpoint.js"
 
 const App = () => {
   const [ weatherData, setWeatherData ] = useState({})
